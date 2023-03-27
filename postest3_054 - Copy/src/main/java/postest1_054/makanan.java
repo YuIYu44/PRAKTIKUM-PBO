@@ -28,7 +28,6 @@ public class makanan extends Pesanan {
     public void setJenis(String Jenis) {
         this.Jenis = Jenis;
     }
-    @Override
     public void terpesan(){
         System.out.println("Makanan "+this.Jenis+" "+super.getnama()+" Terpesan");
     }

@@ -66,9 +66,8 @@ public class Postest1_054 {
         for (int j = 0; j < minuman_panas.length; j++) {
             minuman input=new minuman(minuman_panas[j],harga_menu1[j],"panas");
             minuman_menu.add(input);}
-        Pesanan pesan = new Pesanan(null,0);
-        ArrayList<makanan> makanan_pesan = new ArrayList<makanan>();
-        ArrayList<minuman> minuman_pesan = new ArrayList<minuman>();
+        ArrayList<minuman> minuman_pesan=new ArrayList<>();
+        ArrayList<makanan> makanan_pesan=new ArrayList<>();
         int indeks_menu=1;
         while(indeks_menu!=5){
             System.out.println("\n1.Lihat Pesanan\n2.Pesan\n3.Ubah Pesanan\n4.Hapus Pesanan\n5.Exit");
@@ -93,7 +92,8 @@ public class Postest1_054 {
                             for(int i=0;i<minuman_pesan.size();i++){
                                 System.out.println((i+1)+". ["+minuman_pesan.get(i).getJenis()+"] "+minuman_pesan.get(i).getnama() +"   "+minuman_pesan.get(i).getharga());
                                 total+=minuman_pesan.get(i).getharga();}}
-                        pesan.terpesan(total);}}
+                        System.out.println("Total: "+total);
+                        System.out.println("");}}
                 
                 case 2 -> {
                     menu_show(makanan_menu,minuman_menu,"all");
@@ -106,8 +106,7 @@ public class Postest1_054 {
                     else if ("B".equals(option)||"b".equals(option)){
                         minuman tambah=new minuman(minuman_menu.get(index).getnama(),minuman_menu.get(index).getharga(),minuman_menu.get(index).getJenis());
                         minuman_pesan.add(tambah);
-                        minuman_menu.get(index).terpesan();}
-                    pesan.terpesan();}
+                        minuman_menu.get(index).terpesan();}}
                 
                 case 3 -> {
                     String option;
@@ -119,7 +118,7 @@ public class Postest1_054 {
                         if(("a".equals(option)||"A".equals(option))&&(!makanan_pesan.isEmpty())){
                             menu_show(makanan_menu,minuman_menu,"food");
                             int idx=question2("Ganti Menjadi Nomor: ");
-                            makanan ubah=new makanan((makanan_menu).get(idx).getnama(),makanan_menu.get(idx).getharga(),makanan_menu.get(idx).getJenis());
+                            makanan ubah=new makanan(makanan_menu.get(idx).getnama(),makanan_menu.get(idx).getharga(),makanan_menu.get(idx).getJenis());
                             makanan_pesan.set(index,ubah);
                             makanan_menu.get(idx).terpesan();}
                         else if (("b".equals(option)||"B".equals(option))&&(!minuman_pesan.isEmpty())){
