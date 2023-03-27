@@ -25,4 +25,11 @@ public class Pesanan {
         return harga;}
 
     public void setharga(int hargas) {
-        this.harga = hargas;}}
+        this.harga = hargas;}
+    public void terpesan(){
+        System.out.println("Anda telah berhasil memesan");
+    }
+    public void terpesan(int total){
+        System.out.println("\nAnda telah memesan degnan total:  "+total+"\n");
+    }
+}
