@@ -8,28 +8,29 @@ package postest1_054;
  *
  * @author HP
  */
-public class makanan extends Pesanan {
+public final class makanan extends Pesanan {
     private String Jenis;
     makanan(String namas,int hargas,String jenis){
         super(namas,hargas);
         this.Jenis=jenis;
     }
+     public String getnama() {
+        return nama;}
 
-    /**
-     * @return the Jenis
-     */
+    public void setnama(String namas) {
+        this.nama = namas;}
+
+    public int getharga() {
+        return harga;}
+
+    public void setharga(int hargas) {
+        this.harga = hargas;}
     public String getJenis() {
-        return Jenis;
-    }
-
-    /**
-     * @param Jenis the Jenis to set
-     */
+        return Jenis;}
+    
     public void setJenis(String Jenis) {
         this.Jenis = Jenis;
     }
-    @Override
     public void terpesan(){
-        System.out.println("Makanan "+this.Jenis+" "+super.getnama()+" Terpesan");
-    }
+        System.out.println("Makanan "+this.Jenis+" "+getnama()+" Terpesan");}
 }

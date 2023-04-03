@@ -8,28 +8,17 @@ package postest1_054;
  *
  * @author HP
  */
-public class Pesanan {
-    private String nama;
-    private int harga;
+public abstract class Pesanan {
+    protected String nama;
+    protected int harga;
     public Pesanan(String namas,int hargas){
         this.nama=namas;
         this.harga=hargas;}
-
-    public String getnama() {
-        return nama;}
-
-    public void setnama(String namas) {
-        this.nama = namas;}
-
-    public int getharga() {
-        return harga;}
-
-    public void setharga(int hargas) {
-        this.harga = hargas;}
-    public void terpesan(){
-        System.out.println("Anda telah berhasil memesan");
-    }
-    public void terpesan(int total){
-        System.out.println("\nAnda telah memesan degnan total:  "+total+"\n");
-    }
-}
+    protected abstract String getnama();
+    protected abstract void setnama(String namas);
+    protected abstract int getharga();
+    protected abstract void setharga(int hargas);
+    protected abstract void terpesan();
+    protected void terpesan(int total){
+        System.out.println("\nAnda telah memesan dengan total:  "+total+"\n");
+    }}

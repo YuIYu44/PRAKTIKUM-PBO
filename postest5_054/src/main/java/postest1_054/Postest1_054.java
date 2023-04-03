@@ -24,11 +24,11 @@ public class Postest1_054 {
             for (int i=0;i<mnm.size();i++) {
                 System.out.println((i+1)+". ["+mnm.get(i).getJenis()+"] "+mnm.get(i).getnama()+"    "+mnm.get(i).getharga());}}}
     
-    static void empty() throws IOException{
+    static final void empty() throws IOException{
         InputStreamReader isr=new InputStreamReader(System.in);
         BufferedReader bfr=new BufferedReader(isr);
         System.out.println("Pesanan Kosong");
-        String kosong=bfr.readLine();}
+        final String kosong=bfr.readLine();}
     
     static String question(String quest) throws IOException{
         InputStreamReader isr=new InputStreamReader(System.in);
@@ -47,13 +47,13 @@ public class Postest1_054 {
     public static void main(String[] args) throws IOException{
         ArrayList<minuman> minuman_menu=new ArrayList<>();
         ArrayList<makanan> makanan_menu=new ArrayList<>();
-        String[] menu_berat={"Salad Special Ayam Grilled","Steak dengan Nasi","Honey Mustard Ayam Smoked","Beef Satay Honey Sauce","Sweet Sheep Steak"};
-        String[] menu_ringan={"Kentang Goreng","Onion Ring","Banana Chips","Fries Chips"};
-        String[] minuman_panas={"Hot Strawberry Milk Punch","Hot Matcha","Hot Tea","Hot Blueberry Milk Punch"};
-        String[] minuman_dingin={"Strawberry Punch","Matcha Frappe","Tea Lychee","Blueberry Punch"};
-        int[] harga_menu_berat={42500,60000,45000,25000,56000};
-        int[] harga_menu_ringan={20000,22000,15000,17000};
-        int[] harga_menu1={17000,20000,16000,18000};
+        final String[] menu_berat={"Salad Special Ayam Grilled","Steak dengan Nasi","Honey Mustard Ayam Smoked","Beef Satay Honey Sauce","Sweet Sheep Steak"};
+        final String[] menu_ringan={"Kentang Goreng","Onion Ring","Banana Chips","Fries Chips"};
+        final String[] minuman_panas={"Hot Strawberry Milk Punch","Hot Matcha","Hot Tea","Hot Blueberry Milk Punch"};
+        final String[] minuman_dingin={"Strawberry Punch","Matcha Frappe","Tea Lychee","Blueberry Punch"};
+        final int[] harga_menu_berat={42500,60000,45000,25000,56000};
+        final int[] harga_menu_ringan={20000,22000,15000,17000};
+        final int[] harga_menu1={17000,20000,16000,18000};
         for (int j = 0; j < menu_berat.length; j++) {
             makanan input=new makanan(menu_berat[j],harga_menu_berat[j],"berat");
             makanan_menu.add(input);}
@@ -66,7 +66,6 @@ public class Postest1_054 {
         for (int j = 0; j < minuman_panas.length; j++) {
             minuman input=new minuman(minuman_panas[j],harga_menu1[j],"panas");
             minuman_menu.add(input);}
-        Pesanan pesan = new Pesanan(null,0);
         ArrayList<makanan> makanan_pesan = new ArrayList<makanan>();
         ArrayList<minuman> minuman_pesan = new ArrayList<minuman>();
         int indeks_menu=1;
@@ -93,8 +92,8 @@ public class Postest1_054 {
                             for(int i=0;i<minuman_pesan.size();i++){
                                 System.out.println((i+1)+". ["+minuman_pesan.get(i).getJenis()+"] "+minuman_pesan.get(i).getnama() +"   "+minuman_pesan.get(i).getharga());
                                 total+=minuman_pesan.get(i).getharga();}}
-                        pesan.terpesan(total);}}
-                
+                        makanan_pesan.get(0).terpesan(total);}}
+               
                 case 2 -> {
                     menu_show(makanan_menu,minuman_menu,"all");
                     String option = question("Pesan pada kategori (A/B): ");
@@ -106,8 +105,7 @@ public class Postest1_054 {
                     else if ("B".equals(option)||"b".equals(option)){
                         minuman tambah=new minuman(minuman_menu.get(index).getnama(),minuman_menu.get(index).getharga(),minuman_menu.get(index).getJenis());
                         minuman_pesan.add(tambah);
-                        minuman_menu.get(index).terpesan();}
-                    pesan.terpesan();}
+                        minuman_menu.get(index).terpesan();}}
                 
                 case 3 -> {
                     String option;
@@ -119,7 +117,7 @@ public class Postest1_054 {
                         if(("a".equals(option)||"A".equals(option))&&(!makanan_pesan.isEmpty())){
                             menu_show(makanan_menu,minuman_menu,"food");
                             int idx=question2("Ganti Menjadi Nomor: ");
-                            makanan ubah=new makanan((makanan_menu).get(idx).getnama(),makanan_menu.get(idx).getharga(),makanan_menu.get(idx).getJenis());
+                            makanan ubah=new makanan(makanan_menu.get(idx).getnama(),makanan_menu.get(idx).getharga(),makanan_menu.get(idx).getJenis());
                             makanan_pesan.set(index,ubah);
                             makanan_menu.get(idx).terpesan();}
                         else if (("b".equals(option)||"B".equals(option))&&(!minuman_pesan.isEmpty())){
